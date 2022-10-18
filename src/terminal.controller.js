@@ -1,3 +1,4 @@
+import DraftLog from "draftlog";
 import chalk from "chalk";
 import chalkTable from "chalk-table";
 import readline from "readline";
@@ -9,6 +10,16 @@ export default class TerminalController {
     this.data = {};
   }
 
+  initializeTerminal(database, language) {
+    DraftLog(console).addLineListener(process.stdin);
+    this.terminal = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
+
+    this.initializeTable(database, language);
+  }
+
   initializeTable(database, language) {
     const data = database.map((element) =>
       new Person(element).formatted(language)
@@ -18,12 +29,7 @@ export default class TerminalController {
     this.data = data;
   }
 
-  question(msg = "") {
-    const terminal = readline.createInterface({
-      input: process.stdin,
-      output: process.stdout,
-    });
-  }
+  question(msg = "") {}
 
   getTableOptions() {
     return {
