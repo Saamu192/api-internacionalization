@@ -1,5 +1,6 @@
 import database from "./../database.json" assert { type: "json" };
 import Person from "./persons.js";
+import { save } from "./repository.js";
 import TerminalController from "./terminal.controller.js";
 
 const DEFAULT_LANG = "pt-BR";
