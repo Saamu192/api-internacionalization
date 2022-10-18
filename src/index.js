@@ -7,3 +7,15 @@ const STOP_TERM = ":q";
 
 const terminalController = new TerminalController();
 terminalController.initializeTerminal(database, DEFAULT_LANG);
+
+async function mainLoop() {
+  try {
+    const answer = await terminalController.question();
+    if (answer === STOP_TERM) {
+      terminalController.closeTerminal();
+      console.log("processo finalizado");
+      return;
+    }
+    const person = Person.generateInstanceFromString(answer);
+  } catch (error) {}
+}
