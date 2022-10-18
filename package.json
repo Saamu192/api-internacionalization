@@ -5,6 +5,9 @@
   "type": "module",
   "author": "Saamu192 <samuelpr192@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "npx nodemon --ignore database.json --exec node --experimental-json-modules src/index.js"
+  },
   "dependencies": {
     "chalk": "^5.1.2",
     "chalk-table": "^1.0.2",
