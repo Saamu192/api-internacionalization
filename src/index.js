@@ -13,9 +13,18 @@ async function mainLoop() {
     const answer = await terminalController.question();
     if (answer === STOP_TERM) {
       terminalController.closeTerminal();
-      console.log("processo finalizado");
+      console.log("process finished!");
       return;
     }
     const person = Person.generateInstanceFromString(answer);
-  } catch (error) {}
+    terminalController.updateTable(person.formatted(DEFAULT_LANG));
+    await save(person);
+
+    return mainLoop();
+  } catch (error) {
+    console.error("DEU RUIM**", error);
+    return mainLoop();
+  }
 }
+
+await mainLoop();
