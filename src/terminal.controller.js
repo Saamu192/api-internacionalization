@@ -29,7 +29,9 @@ export default class TerminalController {
     this.data = data;
   }
 
-  question(msg = "") {}
+  question(msg = "") {
+    return new Promise((resolve) => this.terminal.question(msg, resolve));
+  }
 
   getTableOptions() {
     return {
