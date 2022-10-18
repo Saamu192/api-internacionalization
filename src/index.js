@@ -7,17 +7,6 @@ import Person from "./persons.js";
 
 DraftLog(console).addLineListener(process.stdin);
 
-const options = {
-  leftPad: 2,
-  columns: [
-    { field: "id", name: chalk.cyan("ID") },
-    { field: "vehicles", name: chalk.magenta("vehicles") },
-    { field: "kmTraveled", name: chalk.green("km Traveled") },
-    { field: "from", name: chalk.cyan("From") },
-    { field: "to", name: chalk.cyan("To") },
-  ],
-};
-
 const table = chalkTable(
   options,
   database.map((element) => new Person(element).formatted())
