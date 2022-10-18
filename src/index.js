@@ -23,12 +23,3 @@ const table = chalkTable(
   database.map((element) => new Person(element).formatted())
 );
 const print = console.draft(table);
-
-const terminal = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-// terminal.question("Qual é o seu nome?", (msg) => {
-//   console.log("msg", msg.toString());
-// });
