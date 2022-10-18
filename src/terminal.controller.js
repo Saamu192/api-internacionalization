@@ -1,7 +1,22 @@
+import chalk from "chalk";
+import chalkTable from "chalk-table";
 import readline from "readline";
+import Person from "./persons.js";
 
 export default class TerminalController {
-  constructor() {}
+  constructor() {
+    this.print = {};
+    this.data = {};
+  }
+
+  initializeTable(database, language) {
+    const data = database.map((element) =>
+      new Person(element).formatted(language)
+    );
+    const table = chalkTable(this.getTableOptions(), data);
+    this.print = console.draft(table);
+    this.data = data;
+  }
 
   question(msg = "") {
     const terminal = readline.createInterface({
